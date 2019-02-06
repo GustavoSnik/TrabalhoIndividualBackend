@@ -16,16 +16,16 @@ class CreateMarcenariaTable extends Migration
         Schema::create('marcenaria', function (Blueprint $table) {
             $table->increments('id');
             $table->string('orcamento');
-            $table->integer('clientes_id')->unsigned()->nullable();
+            $table->integer('ordemdeservico')->unsigned()->nullable();
             $table->string('devProjeto');
-            $table->string('ordemDeServico');
             $table->string('endereco');
             $table->string('telefone');
             $table->timestamps();
+
         });
 
         Schema::table('marcenaria', function (Blueprint $table) {
-            $table->foreign('clientes_id')->references('id')->on('clientes')->onDelete('set null');
+            $table->foreign('ordemservico_id')->references('id')->on('ordemDeServico')->onDelete('set null');
 
         }
 
